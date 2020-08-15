@@ -1,0 +1,19 @@
+1. The core features of Node.js and Express and why they are useful.
+// Node.js is cool cause I can code with JS in the front and backend which makes my stack less complicated.
+and making the backend much easier for frontend only engineers to understand.
+// express takes out a bunch of boiler plate making my job easier. 
+
+2. Understand and explain the use of Middleware?
+//middleware are (sometimes) custom functions that I can spread across my endpoints to make my job easier and cleaner.
+//middlware is basically a form of actions that happen to data bewteen the request and response.
+
+
+3. The basic principles of the REST architectural style.
+// making enpoints simple, understandable and easy to use. ( straight to the point )
+
+4. Understand and explain the use of Express Routers.
+// express routers keep my code clean and my run file/index.js clean and easy to read.
+
+5. Describe tooling used to manually test the correctness of an API.
+//Tools used for api testing are super helpful for checking endpoints ect.
+//Like using Insomnia! allows you to make "fake"(not really fake but you get it) requests to specific endpoints (w/ or without data) and see the response!
