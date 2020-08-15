@@ -58,7 +58,7 @@ router.get('/', (req, res, next) => {
       });
 
   //PUT ACTION/UPDATE BY ID
-  router.put('/:id',  (req, res, next) => {
+  router.put('/:id', validateActionId,  (req, res, next) => {
     if ( !req.body.description || !req.body.notes ) {
       return res.status(400).json({message:"Please provide DESCRIPTION, and NOTES"})
     }
@@ -83,15 +83,13 @@ router.get('/', (req, res, next) => {
 
 
   //DELETE ACTION BY ID
-  router.delete('/:id', (req, res, next) => {
+  router.delete('/:id', validateActionId, (req, res, next) => {
     actions
      .remove(req.params.id)
      .then((count) => {
        if (count > 0){
          res.status(200).json({message:"action deleted"})
-       } else {
-         res.status(404).json({message:"action with said ID not found"})
-       }
+       } 
      })
      .catch((error) => {
        next(error)
@@ -99,6 +97,23 @@ router.get('/', (req, res, next) => {
    });
 
 
+   // random custom middleware
+   
+   function validateActionId(req, res, next) {
+    actions
+      .get(req.params.id)
+      .then(posts => {
+        if (posts) {
+          req.posts = posts
+          next()
+        } else {
+          res.status(400).json({ error: "Invalid action ID." })
+        }
+      })
+      .catch((error) => {
+        next(error)
+      })
+  }
 
 
 module.exports = router;
