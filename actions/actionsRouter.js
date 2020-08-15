@@ -38,7 +38,7 @@ router.get('/', (req, res, next) => {
         if (!req.body.notes || !req.body.description || !req.body.project_id) {
           res.status(404).json({message:"notes and description required"})
         }
-        if (req.body.description.length >= 128) {
+        if (req.body.description.length > 128) {
             res.status(400).json({message:"description CANNOT excede 128 characters."})
             .abort()
         }
@@ -98,7 +98,7 @@ router.get('/', (req, res, next) => {
 
 
    // random custom middleware
-   
+
    function validateActionId(req, res, next) {
     actions
       .get(req.params.id)
